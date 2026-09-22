@@ -370,3 +370,27 @@ def test_evaluate_mocked_run_matches_the_committed_fixture(monkeypatch, capsys):
     actual = json.loads(captured.out)
     fixture.pop("mock_note", None)
     assert actual == fixture
+
+
+def test_evaluate_mocked_text_output_carries_advisory_notices(monkeypatch, capsys):
+    # The --json mode is pure evaluation data (see the fixture test above);
+    # the human-readable mode is what carries the ADVISORY-only, energy, and
+    # manual-submission notices.
+    repo_root = Path(__file__).resolve().parent.parent
+    transcript = repo_root / "examples" / "synthetic-transcript.json"
+    response = _Response(
+        scores={"c0": _Score(3.8, 0.91), "c1": _Score(3.2, 0.84)},
+        nouls={"overall_break": _Noul(0.85)},
+    )
+    monkeypatch.setattr(
+        judge, "build_client", lambda timeout_seconds=120.0: _Client(response)
+    )
+
+    exit_code = cli.main(["evaluate", str(transcript)])
+
+    captured = capsys.readouterr()
+    assert exit_code == 0
+    assert "ADVISORY only" in captured.out
+    assert "costs 10" in captured.out
+    assert "Manual submission" in captured.out
+    assert "verdict: SUBMIT" in captured.out

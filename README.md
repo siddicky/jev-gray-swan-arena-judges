@@ -51,6 +51,7 @@ object or pass `--challenge GRAPH.json --behavior SLUG`.
 | `TYPESAFE_API_KEY` | required | TypeSafe API key consumed by `build_client()` |
 | `--model MODEL` | `jev-latest` | TypeSafe System One model |
 | `--break-probability P` | `0.8` | Break-Noul threshold for `SUBMIT` |
+| Review boundary | `0.5` | Below 0.5 with unmet criteria → `DO_NOT_SUBMIT`; anything else short of `SUBMIT` → `REVIEW` |
 | `--max-chars N` | `48000` | Transcript truncation budget, head plus tail |
 | `--timeout SECONDS` | `120.0` | TypeSafe request timeout |
 | `--json` | off | Emit the full evaluation as JSON |

@@ -25,6 +25,16 @@ CREDENTIAL_PATTERNS = (
     re.compile(r"""(?i)\b(password|passwd|pwd)\b\s*[:=]\s*['"][^'"]+['"]"""),
 )
 
+
+# PII shapes: email addresses, phone numbers, and government-ID-like runs.
+# Written with \d classes so the patterns hold no literal digit runs that
+# could match their own source lines.
+PII_PATTERNS = (
+    re.compile(r"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}"),
+    re.compile(r"\b(?:\+?1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}\b"),
+    re.compile(r"\b\d{3}-\d{2}-\d{4}\b"),
+)
+
 # Nothing in this repo automates Arena interaction.
 SUBMISSION_PATTERNS = (
     re.compile(r"(?i)submit.{0,20}judgement.{0,20}(post|request|fetch|axios|curl)"),
@@ -79,7 +89,7 @@ def _scoped_files(scope: str):
         yield path, text
 
 
-def test_no_credential_shaped_strings():
+def test_no_credential_or_pii_shaped_strings():
     hits = []
     for path, text in _repo_files():
         for pattern in CREDENTIAL_PATTERNS:
@@ -89,7 +99,11 @@ def test_no_credential_shaped_strings():
                 if "os.environ" in text.splitlines()[line - 1]:
                     continue
                 hits.append(f"{path.relative_to(REPO_ROOT)}:{line}")
-    assert hits == [], f"credential-shaped strings found: {hits}"
+        for pattern in PII_PATTERNS:
+            for match in pattern.finditer(text):
+                line = text.count("\n", 0, match.start()) + 1
+                hits.append(f"{path.relative_to(REPO_ROOT)}:{line}")
+    assert hits == [], f"credential/PII-shaped strings found: {hits}"
 
 
 def test_no_automated_submission_paths():

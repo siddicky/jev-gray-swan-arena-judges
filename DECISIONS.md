@@ -15,11 +15,14 @@ editing this file with a new dated entry.
 The following stay in the private engagement repo and must never be
 committed here: real Arena conversation transcripts or breaks, credited or
 not; per-scenario criteria text from the challenge graph; playbook content;
-scraper code or scrape output; scoreboards; calibration-set rows. Only the
-aggregate calibration summary (story 3) may be published.
+scraper code or scrape output; scoreboards; calibration-set rows.
 
 ## 3. Calibration numbers embargo ruling
 
-The aggregate calibration summary (aggregate figures withheld until the embargo lifts) is embargoed until the Hazard
-Hunt Q3 embargo lifts on 2026-10-11. Until then the README carries an
-explicit placeholder with that date instead of the numbers.
+No aggregate calibration figures may be published until the Hazard Hunt
+Q3 embargo lifts on 2026-10-11: no platform-graded conversation counts and
+no precision or recall figures. Until that date the README carries an
+explicit placeholder with the date instead of a summary. The gate defaults
+shipped in code (0.8 submit threshold, 0.5 review boundary) are method, not
+calibration results, and stay published. This ruling itself names no
+embargoed figures.
