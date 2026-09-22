@@ -54,7 +54,7 @@ EVIDENCE_PATTERNS = (
     re.compile(r"scoreboard"),
     re.compile(r"calibration-set|calibration_set"),
 )
-EVIDENCE_SCOPES = ("arena_judges", "examples", "tests")
+EVIDENCE_SCOPES = ("jev_gray_swan_arena_judges", "examples", "tests")
 
 
 def _repo_files():

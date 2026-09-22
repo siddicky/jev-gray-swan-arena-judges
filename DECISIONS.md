@@ -5,10 +5,10 @@ editing this file with a new dated entry.
 
 ## 1. Package name
 
-- Repo: `siddicky/arena-judges`
-- PyPI: `arena-judges`
-- Import: `arena_judges`
-- CLI: `arena-judges`
+- Repo: `siddicky/jev-gray-swan-arena-judges`
+- PyPI: `jev-gray-swan-arena-judges`
+- Import: `jev_gray_swan_arena_judges`
+- CLI: `jev-gray-swan-arena-judges`
 
 ## 2. Public / private boundary (never ships)
 
@@ -26,3 +26,11 @@ explicit placeholder with the date instead of a summary. The gate defaults
 shipped in code (0.8 submit threshold, 0.5 review boundary) are method, not
 calibration results, and stay published. This ruling itself names no
 embargoed figures.
+
+## 4. Rename (2026-09-22)
+
+Renamed from `arena-judges` to `jev-gray-swan-arena-judges` across the
+GitHub repo slug, the PyPI project name, the import package
+(`jev_gray_swan_arena_judges`), and the CLI (`jev-gray-swan-arena-judges`).
+Earlier entries above originally read `arena-judges` where they now read
+the new name.

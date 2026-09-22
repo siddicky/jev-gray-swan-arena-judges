@@ -151,7 +151,7 @@ def require_typesafe():
         import typesafe_sdk
     except ImportError as exc:
         raise ConfigError(
-            "TypeSafe evaluators require typesafe-sdk: pip install arena-judges"
+            "TypeSafe evaluators require typesafe-sdk: pip install jev-gray-swan-arena-judges"
         ) from exc
     return typesafe_sdk
 

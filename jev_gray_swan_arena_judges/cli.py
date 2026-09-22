@@ -1,6 +1,6 @@
-"""Command-line interface: `arena-judges evaluate`.
+"""Command-line interface: `jev-gray-swan-arena-judges evaluate`.
 
-The judge backend lives in :mod:`arena_judges.judge` and is imported lazily
+The judge backend lives in :mod:`jev_gray_swan_arena_judges.judge` and is imported lazily
 inside the command body, so ``evaluate --help`` works on a bare interpreter
 and only a real run needs ``typesafe-sdk`` plus ``TYPESAFE_API_KEY``.
 """
@@ -15,7 +15,7 @@ from pathlib import Path
 EXIT_OK = 0
 EXIT_USAGE = 2
 
-# CLI-side mirrors of the judge defaults in arena_judges.judge. They are
+# CLI-side mirrors of the judge defaults in jev_gray_swan_arena_judges.judge. They are
 # duplicated (not imported) so --help never imports the TypeSafe backend;
 # tests assert the two stay in sync.
 MODEL_DEFAULT = "jev-latest"
@@ -26,7 +26,7 @@ TIMEOUT_SECONDS_DEFAULT = 120.0
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="arena-judges",
+        prog="jev-gray-swan-arena-judges",
         description=(
             "Off-platform TypeSafe judges that mimic the Gray Swan Arena "
             "official judges. ADVISORY only: verdicts guide when to spend "

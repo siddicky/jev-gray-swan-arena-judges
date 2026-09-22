@@ -1,5 +1,5 @@
 [project]
-name = "arena-judges"
+name = "jev-gray-swan-arena-judges"
 version = "0.1.0"
 description = "Off-platform TypeSafe judges that mimic the Gray Swan Arena official judges"
 readme = "README.md"
@@ -16,20 +16,20 @@ dependencies = [
 ]
 
 [project.scripts]
-arena-judges = "arena_judges.cli:main"
+jev-gray-swan-arena-judges = "jev_gray_swan_arena_judges.cli:main"
 
 [dependency-groups]
 dev = ["pytest>=7.0"]
 
 [project.urls]
-Homepage = "https://github.com/siddicky/arena-judges"
+Homepage = "https://github.com/siddicky/jev-gray-swan-arena-judges"
 
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["arena_judges"]
+packages = ["jev_gray_swan_arena_judges"]
 
 [tool.pytest.ini_options]
 minversion = "7.0"

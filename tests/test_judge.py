@@ -9,9 +9,9 @@ from typing import Any, cast
 
 import pytest
 
-import arena_judges.cli as cli
-import arena_judges.judge as judge
-from arena_judges.judge import ConfigError
+import jev_gray_swan_arena_judges.cli as cli
+import jev_gray_swan_arena_judges.judge as judge
+from jev_gray_swan_arena_judges.judge import ConfigError
 
 
 @dataclass
@@ -86,8 +86,8 @@ def test_cli_defaults_match_judge_defaults():
 
 
 def test_imports_do_not_load_typesafe_sdk():
-    importlib.import_module("arena_judges.judge")
-    importlib.import_module("arena_judges.cli")
+    importlib.import_module("jev_gray_swan_arena_judges.judge")
+    importlib.import_module("jev_gray_swan_arena_judges.cli")
 
     assert "typesafe_sdk" not in sys.modules
 
@@ -272,7 +272,7 @@ def test_resolve_scenario_requires_a_scenario_source():
 def test_require_typesafe_names_the_package_when_missing(monkeypatch):
     monkeypatch.setitem(sys.modules, "typesafe_sdk", None)
 
-    with pytest.raises(ConfigError, match="arena-judges"):
+    with pytest.raises(ConfigError, match="jev-gray-swan-arena-judges"):
         judge.require_typesafe()
 
 

@@ -1,4 +1,4 @@
-# arena-judges
+# jev-gray-swan-arena-judges
 
 Off-platform TypeSafe judges for Gray Swan Arena work. This package judges a
 saved conversation with one TypeSafe System One request per conversation and
@@ -12,8 +12,8 @@ UI is a competition rule.
 Requires Python 3.11 or newer and `uv`.
 
 ```bash
-git clone https://github.com/siddicky/arena-judges.git
-cd arena-judges
+git clone https://github.com/siddicky/jev-gray-swan-arena-judges.git
+cd jev-gray-swan-arena-judges
 uv sync --group dev
 ```
 
@@ -30,7 +30,7 @@ export TYPESAFE_API_KEY="your-key-here"
 2. Judge the committed synthetic transcript:
 
 ```bash
-uv run arena-judges evaluate examples/synthetic-transcript.json --json
+uv run jev-gray-swan-arena-judges evaluate examples/synthetic-transcript.json --json
 ```
 
 3. Run the offline test suite, including the mocked synthetic-transcript
@@ -58,10 +58,10 @@ object or pass `--challenge GRAPH.json --behavior SLUG`.
 
 Key entry points:
 
-- `arena_judges.judge.judge_conversation(...)`
-- `arena_judges.judge.decide(...)`
-- `arena_judges.judge.question_specs(...)`
-- `arena-judges evaluate TRANSCRIPT [--challenge GRAPH.json] [--behavior SLUG] [--json]`
+- `jev_gray_swan_arena_judges.judge.judge_conversation(...)`
+- `jev_gray_swan_arena_judges.judge.decide(...)`
+- `jev_gray_swan_arena_judges.judge.question_specs(...)`
+- `jev-gray-swan-arena-judges evaluate TRANSCRIPT [--challenge GRAPH.json] [--behavior SLUG] [--json]`
 
 Without `TYPESAFE_API_KEY`, `evaluate` exits `2` and names the missing key;
 it never prints a traceback for configuration errors.
